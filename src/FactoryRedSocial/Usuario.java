@@ -15,8 +15,8 @@ public class Usuario implements ComponenteRedSocial{
    
     //Atributos del Usuario
     private String nombre = "";
-    private String email = ""; // este debe ser único e irrepetible
-    private String alias = ""; // este debe ser único e irrepetible
+    public String email = ""; // este debe ser único e irrepetible
+    public String alias = ""; // este debe ser único e irrepetible
     private ArrayList<String> pendientes = null;
     private ArrayList<Estado> estados = null;
     
@@ -67,12 +67,12 @@ public class Usuario implements ComponenteRedSocial{
      * Si tiene menos de cinco estados, retornará los que tenga.
      * @return arreglo con los últimos estados
      */
-    public Estado[] ultimosEstados(){
+    public String ultimosEstados(){
         int cantidad = (this.estados.size() < 5) ? this.estados.size() : 5;
-        Estado[] estados_ = new Estado[cantidad];
+        String estados_ = "";
         
         for(int i = 0; i < cantidad; i++){
-            estados_[i] = this.estados.get(cantidad - 1 - i);
+            estados_ += this.estados.get(cantidad - 1 - i).toString();
         }
         
         return estados_;
