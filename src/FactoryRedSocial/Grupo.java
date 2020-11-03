@@ -20,7 +20,8 @@ package FactoryRedSocial;
 import java.util.ArrayList;
 
 /**
- *
+ * Esta clase modela los atributos y comportamientos básicos de un Grupo en la red de Socitos.
+ * Esta clase es parte de la implementación del Patrón de Diseño Factoty, como un objeto a ser construido por la fábrica.
  * @author casierrav
  */
 public class Grupo implements ComponenteRedSocial{
@@ -43,9 +44,9 @@ public class Grupo implements ComponenteRedSocial{
     
     
     /**
-     * 
+     * Este método es utilizado para agregar (afiliar) un usuario al grupo
      * @param nuevoUsuario
-     * @return 
+     * @return éxito de la operación
      */
     public String agregarUsuario(String nuevoUsuario){
         try{
@@ -60,9 +61,9 @@ public class Grupo implements ComponenteRedSocial{
     
     
     /**
-     * 
+     * Este método es utilizado para buscar un usuario afiliado al grupo
      * @param usuario
-     * @return 
+     * @return encontrado(true) o no encontrado (false)
      */
     public boolean buscarUsuario(String usuario){
         try{
@@ -76,9 +77,9 @@ public class Grupo implements ComponenteRedSocial{
     
     
     /**
-     * 
+     * Este método es utilizado para eliminar un usuario (desafiliar) del grupo
      * @param usuario
-     * @return 
+     * @return éxito de la operación 
      */
     public String eliminarUsuario(String usuario){
         try{
