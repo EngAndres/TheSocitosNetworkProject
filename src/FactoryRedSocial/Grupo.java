@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Grupo implements ComponenteRedSocial{
    
     //Atributos del Grupo
-    private String nombre = ""; //este debe ser único e irrepetible
+    public String nombre = ""; //este debe ser único e irrepetible
     private ArrayList<String> usuarios = null;
     private ArrayList<Estado> estadosEnGrupo = null;
     
@@ -88,6 +88,9 @@ public class Grupo implements ComponenteRedSocial{
     public String agregarEstado(Estado nuevoEstado){
         try{
             this.estadosEnGrupo.add(nuevoEstado);
+            
+            
+            
             return "Proceso Exitoso";
         }
         catch(Exception ex){
@@ -102,15 +105,31 @@ public class Grupo implements ComponenteRedSocial{
      * Si tiene menos de cinco estados, retornará los que tenga.
      * @return arreglo con los últimos estados
      */
-    public Estado[] ultimosEstados(){
+    public String ultimosEstados(){
         int cantidad = (this.estadosEnGrupo.size() < 10) ? this.estadosEnGrupo.size() : 10;
-        Estado[] estados = new Estado[cantidad];
+        String estados = "";
         
         for(int i = 0; i < cantidad; i++){
-            estados[i] = this.estadosEnGrupo.get(cantidad - 1 - i);
+            estados += this.estadosEnGrupo.get(this.estadosEnGrupo.size() - 1 - i).toString();
         }
         
         return estados;
+    }
+    
+    
+    /**
+     * Este método se utiliza para retornar la lista de usuarios inscritos al grupo
+     * @return 
+     */
+    public String[] listaUsuarios(){
+        int cantidad = this.usuarios.size();
+        String[] listaActual = new String[cantidad];
+       
+        for(int i = 0; i < cantidad; i++){
+            listaActual[i] = this.usuarios.get(i);
+        }
+        
+        return listaActual;
     }
     
     
@@ -121,7 +140,10 @@ public class Grupo implements ComponenteRedSocial{
     @Override
     public String toString(){
         String grupo = "El grupo tiene por nombre " + this.nombre + ". Se compone por " + this.usuarios.size() +
-                    " usuarios y se han escrito " + this.estadosEnGrupo.size() + " estados.\n";
+                    " usuarios y se han escrito " + this.estadosEnGrupo.size() + " estados.\n\nUsuarios:";
+        for(String usuario: this.usuarios){
+            grupo += usuario + "\t";
+        }
         return grupo;
     }
 }

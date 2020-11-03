@@ -8,7 +8,7 @@ package FactoryRedSocial;
 import java.util.HashMap;
 
 /**
- *
+ * Clase que implementa como tal el Patrón de Diseño Factory
  * @author casierrav
  */
 public class Fabrica {
@@ -18,7 +18,7 @@ public class Fabrica {
      */
     public Fabrica(){} 
     
-    public ComponenteRedSocial crearComponenteRedSocial(String tipo, HashMap<String, String> requerimiento){
+    protected ComponenteRedSocial crearComponenteRedSocial(String tipo, HashMap<String, String> requerimiento){
         ComponenteRedSocial respuesta = null;
         switch(tipo){
             case "Usuario":

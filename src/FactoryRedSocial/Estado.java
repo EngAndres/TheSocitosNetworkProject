@@ -59,4 +59,11 @@ public class Estado implements ComponenteRedSocial{
         }
         return comentariosTotal;
     }
+    
+    
+    @Override
+    public String toString(){
+        String respuesta = "Fecha: " + this.fecha + ". Contenido: " + this.contenido + "\n";
+        return respuesta;
+    }
 }
