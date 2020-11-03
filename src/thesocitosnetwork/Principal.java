@@ -28,7 +28,7 @@ public class Principal extends Fachada{
 
     /**
      * Menú Principal de la Aplicación
-     * @return 
+     * @return menú en formato String
      */
     public static String menu(){
         String menu = " \n\n1. Crear Usuario\n"
@@ -48,15 +48,15 @@ public class Principal extends Fachada{
     
     
     /**
-     * 
+     * Esta función es utilizada para leer una línea completa desde la consola verificando que no sea vacía
      * @param texto
      * @param entrada
-     * @return 
+     * @return valor desde consola
      */
     public static String leerLinea(String texto, Scanner entrada){
-        System.out.print(texto);
+        System.out.print(texto); // Texto de guia para que el usuario sepa que va a diligenciar
         String response = entrada.nextLine();
-        while(response.length() == 0){
+        while(response.length() == 0){ 
             response = entrada.nextLine();
         }
         return response;
@@ -64,13 +64,13 @@ public class Principal extends Fachada{
     
     
     /**
-     * 
+     * Esta función es utilizada para leer un valor escrito desde la consola verificando que no sea vacío
      * @param texto
      * @param entrada
-     * @return 
+     * @return valor desde consola
      */
     public static String leer(String texto, Scanner entrada){
-        System.out.print(texto);
+        System.out.print(texto); // Texto de guia para que el usuario sepa que va a diligenciar
         String response = entrada.next();
         while(response.length() == 0){
             response = entrada.next();
@@ -88,9 +88,14 @@ public class Principal extends Fachada{
         Scanner entrada = new Scanner(System.in);
         Fachada fachada = new Fachada();
         
+        // Se usa un DoWhile para primero mostrar el menú y luego validar la opción seleccionada por el usuario
         do {
             System.out.println(menu());
             opcion = Integer.parseInt(entrada.next());
+            
+            // Por el uso de Facade, para cada caso del menú solo se requiere que el usuario diligencie las entradas necesarias
+            // Una vez se tengan las entradas, solo es necesario llamar a la función correspondiente en la Fachada.
+            // Esto implica que en el main no se define ninguna regla del negocio, separando el acceso del usuario de la lógica de la aplicación
             switch(opcion) {
                 case 1:
                     System.out.println("========== CREAR USUARIO ==========");

@@ -20,7 +20,8 @@ package FactoryRedSocial;
 import java.util.ArrayList;
 
 /**
- *
+ * Esta clase modela los atributos y comportamientos básicos de un Usuario en la red de Socitos.
+ * Esta clase es parte de la implementación del Patrón de Diseño Factoty, como un objeto a ser construido por la fábrica.
  * @author casierrav
  */
 public class Usuario implements ComponenteRedSocial{
@@ -29,7 +30,7 @@ public class Usuario implements ComponenteRedSocial{
     private String nombre = "";
     public String email = ""; // este debe ser único e irrepetible
     public String alias = ""; // este debe ser único e irrepetible
-    private ArrayList<String> pendientes = null;
+    private ArrayList<String> pendientes = null; // notificaciones pendientes por revisar
     private ArrayList<Estado> estados = null;
     
     
@@ -123,10 +124,6 @@ public class Usuario implements ComponenteRedSocial{
     }
     
     
-    /**
-     * Este método es utilizado para dar formato a la infomración del Usuario y empaquetarlo en un solo String
-     * @return datos del usuario 
-     */
     @Override
     public String toString(){
         String usuario = "El usuario tiene por nombre " + this.nombre + ", con el email " + this.email + 

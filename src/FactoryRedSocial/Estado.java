@@ -20,7 +20,8 @@ package FactoryRedSocial;
 import java.util.ArrayList;
 
 /**
- *
+ * Esta clase modela los atributos y comportamientos básicos de un Estado en la red de Socitos.
+ * Esta clase es parte de la implementación del Patrón de Diseño Factoty, como un objeto a ser construido por la fábrica.
  * @author casierrav
  */
 public class Estado implements ComponenteRedSocial{

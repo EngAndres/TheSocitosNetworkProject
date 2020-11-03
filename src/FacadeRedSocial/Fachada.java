@@ -26,11 +26,16 @@ import FactoryRedSocial.Usuario;
 import java.util.HashMap;
 
 /**
- *
+ * Esta clase está basada en el Patrón de Diseño Facade, en donde se tienen las funciones disponibles para el usuario,
+ * las cuales se invocan de manera simple sin que el usuario deba ver o entender la complejidad que puede implicar la
+ * lógica del negocio. 
+ * Adicionalmente, esta clase se conecta (hereda) con una clase llamada Fabrica, que es la clase frontal de la implementación
+ * del Patrón de Diseño Factory en donde está la creación y manejo de relaciones entre los objetos de toda la aplicación.
  * @author casierrav
  */
 public class Fachada extends Fabrica{
     
+    // Temporalmente, por la ausencia de base de datos, se tendrá acá el almacenamiento de los usuarios y grupo de los Socitos
     private ArrayList<Usuario> usuarios = null;
     private ArrayList<Grupo> grupos = null;
     
