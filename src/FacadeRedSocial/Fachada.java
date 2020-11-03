@@ -83,7 +83,7 @@ public class Fachada extends Fabrica{
                 nuevoUsuario.put("email", email);
                 nuevoUsuario.put("alias", alias);
                 this.usuarios.add((Usuario)this.crearComponenteRedSocial("Usuario", nuevoUsuario));
-                return "Usuario Creado Existosamente.";
+                return "Usuario Creado Exitosamente.";
             }else{
                 return "El usuario ya existe en la lista. Por favor, seleccionar un nuevo alias.";
             }
@@ -107,7 +107,7 @@ public class Fachada extends Fabrica{
                 HashMap<String, String> nuevoGrupo = new HashMap<>();
                 nuevoGrupo.put("nombre", nombre);
                 this.grupos.add((Grupo)this.crearComponenteRedSocial("Grupo", nuevoGrupo));
-                return "Grupo Creado Existosamente.";
+                return "Grupo Creado Exitosamente.";
             }else{
                 return "El grupo ya existe en la lista. Por favor, seleccionar un nuevo nombre.";
             }
@@ -167,6 +167,24 @@ public class Fachada extends Fabrica{
         }catch(Exception ex){
              ex.printStackTrace();
             return "No se ha podido agregar el usuario al grupo.";
+        }
+    }
+    
+    
+    /**
+     * Este método se utiliza para realizar las notificaciones a todos los 
+     * @param grupo 
+     */
+    private void notificarUsuariosDeGrupo(String grupo){
+        int indiceGrupo = this.indiceDeGrupo(grupo);
+        int indiceUsuario;
+        
+        String[] usuariosGrupo = this.grupos.get(indiceGrupo).listaUsuarios();
+        String notificacion = "Se ha agregado un nuevo estado al grupo " + grupo + ".";
+        
+        for(String usuario: usuariosGrupo){
+            indiceUsuario = this.indiceDeUsuario(usuario);
+            this.usuarios.get(indiceUsuario).agregarNotificacion(notificacion);
         }
     }
     

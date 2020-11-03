@@ -34,11 +34,44 @@ public class Principal extends Fachada{
         return menu;
     }
     
+    
+    /**
+     * 
+     * @param texto
+     * @param entrada
+     * @return 
+     */
+    public static String leerLinea(String texto, Scanner entrada){
+        System.out.print(texto);
+        String response = entrada.nextLine();
+        while(response.length() == 0){
+            response = entrada.nextLine();
+        }
+        return response;
+    }
+    
+    
+    /**
+     * 
+     * @param texto
+     * @param entrada
+     * @return 
+     */
+    public static String leer(String texto, Scanner entrada){
+        System.out.print(texto);
+        String response = entrada.next();
+        while(response.length() == 0){
+            response = entrada.next();
+        }
+        return response;
+    }
+            
+        
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String usuario = "", grupo = "", fecha = "", contenido = "";
+        String usuario = "", grupo = "", fecha = "", contenido = "", nombre = "", email = "";
         int opcion = -1;
         Scanner entrada = new Scanner(System.in);
         Fachada fachada = new Fachada();
@@ -49,81 +82,60 @@ public class Principal extends Fachada{
             switch(opcion) {
                 case 1:
                     System.out.println("========== CREAR USUARIO ==========");
-                    System.out.print("Ingrese nombre del usuario: ");
-                    String nombre = entrada.nextLine();
-                    nombre = entrada.nextLine();
-                    System.out.print("Ingrese correo del usuario: ");
-                    String email = entrada.next();
-                    System.out.print("Ingrese alias del usuario: ");
-                    usuario = entrada.next();
+                    nombre = leerLinea("Ingrese nombre del usuario: ", entrada);
+                    email = leer("Ingrese correo del usuario: ", entrada);
+                    usuario = leer("Ingrese alias del usuario: ", entrada);
                     System.out.println(fachada.crearUsuario(nombre, email, usuario));
                     break; 
                 case 2:
                     System.out.println("========== CREAR GRUPO ==========");
-                    System.out.print("Ingrese nombre del grupo: ");
-                    grupo = entrada.nextLine();
-                    grupo = entrada.nextLine();
+                    grupo = leerLinea("Ingrese nombre del grupo: ", entrada);
                     System.out.println(fachada.crearGrupo(grupo));
                     break;
                 case 3:
                     System.out.println("========== CREAR ESTADO DE USUARIO ==========");
-                    System.out.print("Ingrese alias del usuario: ");
-                    usuario = entrada.next();
-                    System.out.print("Ingrese la fecha del estado: ");
-                    fecha = entrada.nextLine();
-                    fecha = entrada.nextLine();
-                    System.out.println("Ingrese el contenido del estado: ");
-                    contenido = entrada.nextLine();
+                    usuario = leer("Ingrese alias del usuario: ", entrada);
+                    fecha = leerLinea("Ingrese la fecha del estado: ", entrada);
+                    contenido = leerLinea("Ingrese el contenido del estado: ", entrada);
                     System.out.println(fachada.crearEstadoUsuario(usuario, fecha, contenido));
                     break;
                 case 4:
                     System.out.println("========== AGREGAR USUARIO A GRUPO ==========");
-                    System.out.print("Ingrese nombre del grupo: ");
-                    grupo = entrada.nextLine();
-                    System.out.print("Ingrese alias del usuario: ");
-                    usuario = entrada.next();
+                    grupo = leerLinea("Ingrese nombre del grupo: ", entrada);
+                    usuario = leer("Ingrese alias del usuario: ", entrada);
                     System.out.println(fachada.agregarUsuarioAGrupo(grupo, usuario));
                     break;
                 case 5:
                     System.out.println("========== ELIMINAR USUARIO DE GRUPO ==========");
-                    System.out.print("Ingrese nombre del grupo: ");
-                    grupo = entrada.nextLine();
-                    System.out.print("Ingrese alias del usuario: ");
-                    usuario = entrada.next();
+                    grupo = leerLinea("Ingrese nombre del grupo: ", entrada);
+                    usuario = leer("Ingrese alias del usuario: ", entrada);
                     System.out.println(fachada.eliminarUsuarioDeGrupo(grupo, usuario));
                     break;
                 case 6:
                     System.out.println("========== AGREGAR ESTADO A GRUPO ==========");
-                    System.out.print("Ingrese nombre del grupo: ");
-                    grupo = entrada.nextLine();
-                    System.out.print("Ingrese la fecha del estado: ");
-                    fecha = entrada.nextLine();
-                    System.out.println("Ingrese el contenido del estado: ");
-                    contenido = entrada.nextLine();
+                    grupo = leerLinea("Ingrese nombre del grupo: ", entrada);
+                    fecha = leerLinea("Ingrese la fecha del estado: ", entrada);
+                    contenido = leerLinea("Ingrese el contenido del estado: ", entrada);
                     System.out.println(fachada.agregarEstadoAGrupo(grupo, fecha, contenido));
                     break;
                 case 7:
                     System.out.println("========== VER INFORMACIÓN DE USUARIO ==========");
-                    System.out.print("Ingrese alias del usuario: ");
-                    usuario = entrada.next();
+                    usuario = leer("Ingrese alias del usuario: ", entrada);
                     System.out.println(fachada.verInformacionUsuario(usuario));
                     break;
                 case 8:
                     System.out.println("========== VER INFORMACIÓN DE GRUPO ==========");
-                    System.out.print("Ingrese nombre del grupo: ");
-                    grupo = entrada.nextLine();
+                    grupo = leerLinea("Ingrese nombre del grupo: ", entrada);
                     System.out.println(fachada.verInformacionGrupo(grupo));
                     break;
                 case 9:
                     System.out.println("========== ÚLTIMOS ESTADOS DE USUARIO ==========");
-                    System.out.print("Ingrese alias del usuario: ");
-                    usuario = entrada.next();
+                    usuario = leer("Ingrese alias del usuario: ", entrada);
                     System.out.println(fachada.ultimosEstadosUsuario(usuario));
                     break;
                 case 10:
                     System.out.println("========== ÚLTIMOS ESTADOS DE GRUPO ==========");
-                    System.out.print("Ingrese nombre del grupo: ");
-                    grupo = entrada.nextLine();
+                    grupo = leerLinea("Ingrese nombre del grupo: ", entrada);
                     System.out.println(fachada.ultimosEstadosGrupo(grupo));
                     break;
                 case 11:
@@ -136,5 +148,6 @@ public class Principal extends Fachada{
             
         }
         while(opcion != 11);
+        entrada.close();
     }
 }

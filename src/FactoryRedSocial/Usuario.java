@@ -72,7 +72,7 @@ public class Usuario implements ComponenteRedSocial{
         String estados_ = "";
         
         for(int i = 0; i < cantidad; i++){
-            estados_ += this.estados.get(cantidad - 1 - i).toString();
+            estados_ += this.estados.get(this.estados.size() - 1 - i).toString();
         }
         
         return estados_;

@@ -88,6 +88,9 @@ public class Grupo implements ComponenteRedSocial{
     public String agregarEstado(Estado nuevoEstado){
         try{
             this.estadosEnGrupo.add(nuevoEstado);
+            
+            
+            
             return "Proceso Exitoso";
         }
         catch(Exception ex){
@@ -107,7 +110,7 @@ public class Grupo implements ComponenteRedSocial{
         String estados = "";
         
         for(int i = 0; i < cantidad; i++){
-            estados += this.estadosEnGrupo.get(cantidad - 1 - i).toString();
+            estados += this.estadosEnGrupo.get(this.estadosEnGrupo.size() - 1 - i).toString();
         }
         
         return estados;
